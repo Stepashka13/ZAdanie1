@@ -3,6 +3,8 @@ import openpyxl
 import math
 
 
+dor = input("Введите название колонки: ")
+
 
 df_excel = ("Players.xlsx")
 
@@ -11,7 +13,7 @@ df = pd.read_excel(df_excel)
 print("Исходные данные:")
 print(df)
 
-column_name = 'Players'
+column_name = 'dor'
 numeric_values = df[column_name].dropna()
 numeric_values = numeric_values[pd.to_numeric(numeric_values, errors='coerce').notnull()]
 total_sum = sum(numeric_values)
@@ -21,8 +23,7 @@ print("")
 
 
 
-print("Информация про Players: ")
-print("")
+print("Информация: ")
 print("")
 print("Среднее арифмитическое: ")
 print(sredne)
@@ -40,3 +41,26 @@ print(minimum)
 print("")
 print("Разница между макс. значением и мин. значением: ")
 print(raznica)
+
+print("")
+print("")
+
+result = []
+
+for num in numeric_values:
+    result.append(num - sredne)
+
+
+print("Если из каждого числа вычесть ср.ар.: ")
+print(result)
+print("")
+simma = sum(result)
+disc = simma * simma
+discom = math.pow(simma, 2)
+print("")
+
+print("Дисперсия: ")
+print("Через умножение: ")
+print(disc)
+print("Через квадрат: ")
+print(discom)
