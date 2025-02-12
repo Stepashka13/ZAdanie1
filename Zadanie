@@ -54,13 +54,12 @@ for num in numeric_values:
 print("Если из каждого числа вычесть ср.ар.: ")
 print(result)
 print("")
-simma = sum(result)
-disc = simma * simma
-discom = math.pow(simma, 2)
-print("")
 
-print("Дисперсия: ")
-print("Через умножение: ")
-print(disc)
-print("Через квадрат: ")
+
+
+squared_numbers = [x ** 2 for x in result]
+
+sumsquard = sum(squared_numbers)
+discom = sumsquard / 15
+
 print(discom)
