@@ -1,0 +1,29 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+plt.style.use('_mpl-gallery')
+
+
+file_path = 'sdas.xlsx'  # Путь к файлу Excel
+df = pd.read_excel(file_path)
+
+column_name1 = "x"
+all_values1 = df[column_name1].tolist()
+x = all_values1
+z = 0.5 + np.arange(8)
+
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+ax1.plot(z, x, color='blue', label='sin(x)')
+ax1.set_ylabel('sin(x)', color='blue')
+ax1.tick_params(axis='y', labelcolor='blue')
+colors = plt.get_cmap('Blues')(np.linspace(0.2, 0.7, len(x)))
+ax2.pie(x, colors=colors, radius=3, center=(4, 4),
+       wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
+ax2.set(xlim=(0, 8), xticks=np.arange(1, 8),
+       ylim=(0, 8), yticks=np.arange(1, 8))
+
+plt.show()
