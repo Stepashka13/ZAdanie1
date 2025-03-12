@@ -1,0 +1,26 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+plt.style.use('_mpl-gallery')
+
+file_path = 'sdas.xlsx'  # Путь к файлу Excel
+df = pd.read_excel(file_path)
+column_name = 'y'  # Укажите имя столбца, который хотите извлечь
+all_values = df[column_name].tolist()
+y = all_values
+
+print(df.head())
+
+x = 0.5 + np.arange(8)
+
+fig, ax = plt.subplots()
+
+ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+
+ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+       ylim=(0, 100), yticks=np.arange(1, 8))
+
+plt.show()
+
